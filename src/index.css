@@ -1,654 +1,586 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --bg: #0b1020;
-  --panel: #121a2d;
-  --panel-strong: #1a2540;
-  --muted: #8ea0c4;
-  --text: #ebf2ff;
-  --primary: #7c5cff;
-  --primary-2: #31d0aa;
-  --accent: #ffb703;
-  --danger: #ff6b6b;
-  --card-border: rgba(255, 255, 255, 0.08);
-  --shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(124, 92, 255, 0.22), transparent 18%),
-    linear-gradient(180deg, #09111c 0%, #0d1322 100%);
-  color: var(--text);
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.app-shell {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 20px 60px;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 18px;
-  border: 1px solid var(--card-border);
-  border-radius: 22px;
-  background: rgba(15, 21, 36, 0.8);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow);
-}
-
-.brand-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--primary), #4d7fff);
-  font-weight: 800;
-  font-size: 1.3rem;
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.68rem;
-}
-
-.brand-wrap h1 {
-  margin: 4px 0 0;
-  font-size: 1.6rem;
-}
-
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pill-button,
-.primary-button,
-.secondary-button,
-.ghost-button,
-.segmented,
-.tab {
-  border: none;
-  border-radius: 12px;
-  transition: 0.25s ease;
-}
-
-.pill-button,
-.ghost-button,
-.secondary-button,
-.segmented,
-.tab {
-  padding: 10px 14px;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--card-border);
-}
-
-.primary-button {
-  padding: 11px 16px;
-  background: linear-gradient(135deg, var(--primary), #5f9cfb);
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 12px 20px rgba(92, 101, 255, 0.38);
-}
-
-.primary-button:hover,
-.secondary-button:hover,
-.ghost-button:hover,
-.tab:hover,
-.segmented:hover {
-  transform: translateY(-1px);
-}
-
-.user-chip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  border-radius: 14px;
-  border: 1px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.user-chip img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-chip div {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-chip span {
-  color: var(--muted);
-  font-size: 0.68rem;
-  text-transform: capitalize;
-}
-
-.content-area {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.hero-panel {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 20px;
-  padding: 22px;
-  border-radius: 24px;
-  border: 1px solid var(--card-border);
-  background: linear-gradient(135deg, rgba(25, 34, 58, 0.9), rgba(12, 18, 31, 0.9));
-}
-
-.badge {
-  display: inline-flex;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #dfe7ff;
-  background: rgba(124, 92, 255, 0.18);
-  border: 1px solid rgba(124, 92, 255, 0.38);
-}
-
-.hero-copy h2 {
-  margin: 20px 0 14px;
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 1.05;
-}
-
-.hero-copy p {
-  max-width: 640px;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.hero-stats {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-content: center;
-}
-
-.stat-card {
-  padding: 18px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid var(--card-border);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.stat-card span {
-  color: var(--muted);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.stat-card strong {
-  font-size: 1.5rem;
-}
-
-.category-tabs {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px 2px;
-}
-
-.category-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.tab {
-  flex: 0 0 auto;
-  white-space: nowrap;
-}
-
-.tab.active,
-.segmented.active {
-  background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(49, 208, 170, 0.12));
-  border-color: rgba(124, 92, 255, 0.45);
-}
-
-.panel-section {
-  background: rgba(13, 20, 32, 0.76);
-  border: 1px solid var(--card-border);
-  border-radius: 22px;
-  padding: 20px;
-  box-shadow: var(--shadow);
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.section-head h3 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.match-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
-}
-
-.match-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 260px;
-  padding: 16px;
-  border-radius: 18px;
-  border: 1px solid var(--card-border);
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(12, 18, 31, 0.95));
-}
-
-.match-header,
-.match-card-top,
-.mini-stat-row,
-.meta-row,
-.leaderboard-item,
-.wallet-actions,
-.profile-links,
-.field-row,
-.admin-form,
-.match-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.match-header,
-.match-card-top,
-.mini-stat-row,
-.meta-row {
-  align-items: center;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  border-radius: 999px;
-  text-transform: capitalize;
-}
-
-.status-badge.upcoming {
-  background: rgba(49, 208, 170, 0.12);
-  color: #75f0d2;
-}
-
-.status-badge.live {
-  background: rgba(255, 183, 3, 0.12);
-  color: #ffd166;
-}
-
-.status-badge.completed {
-  background: rgba(255, 107, 107, 0.12);
-  color: #ff9b9b;
-}
-
-.match-time {
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.match-body h4 {
-  margin: 0;
-  font-size: 1.3rem;
-}
-
-.match-body p,
-.meta-row,
-.mini-stat-row,
-.transactions-panel li span,
-.broadcast-list li span,
-.restricted-state,
-.field-row label,
-.admin-form input,
-.admin-form textarea,
-.admin-form select {
-  color: var(--muted);
-}
-
-.meta-row,
-.mini-stat-row {
-  flex-wrap: wrap;
-  margin-top: 8px;
-  font-size: 0.82rem;
-}
-
-.card-actions {
-  margin-top: auto;
-}
-
-.tab-switchers {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.segmented {
-  padding: 10px 18px;
-}
-
-.compact-grid {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.match-card.compact {
-  min-height: 180px;
-}
-
-.match-card-top p {
-  margin: 0;
-  font-weight: 600;
-}
-
-.empty-state,
-.restricted-state {
-  padding: 26px;
-  border: 1px dashed var(--card-border);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.02);
-  text-align: center;
-  color: var(--muted);
-}
-
-.two-column-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 18px;
-}
-
-.wallet-summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.wallet-box {
-  padding: 18px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--card-border);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.wallet-box span {
-  color: var(--muted);
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.wallet-box strong {
-  font-size: 1.8rem;
-}
-
-.wallet-box.highlight {
-  background: rgba(49, 208, 170, 0.08);
-  border-color: rgba(49, 208, 170, 0.2);
-}
-
-.wallet-actions,
-.profile-links {
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-
-.transactions-panel {
-  margin-top: 20px;
-}
-
-.transactions-panel h4 {
-  margin: 0 0 12px;
-}
-
-.transactions-panel ul,
-.broadcast-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.transactions-panel li,
-.broadcast-list li,
-.leaderboard-item {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--card-border);
-}
-
-.transactions-panel li div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.amount-wrap {
-  text-align: right;
-}
-
-.tx-status {
-  display: inline-flex;
-  justify-content: center;
-  padding: 5px 8px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  text-transform: capitalize;
-}
-
-.tx-status.success {
-  background: rgba(49, 208, 170, 0.12);
-  color: #82efc0;
-}
-
-.tx-status.pending {
-  background: rgba(255, 183, 3, 0.12);
-  color: #ffd166;
-}
-
-.leaderboard-list {
-  display: grid;
-  gap: 12px;
-}
-
-.leaderboard-user {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.leaderboard-user img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.leaderboard-user div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.leaderboard-user span {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.rank-pill {
-  display: inline-grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(124, 92, 255, 0.18);
-  color: #d9d0ff;
-  font-weight: 700;
-}
-
-.profile-form,
-.admin-box {
-  display: grid;
-  gap: 16px;
-}
-
-.field-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-label {
-  display: grid;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-input,
-textarea,
-select {
-  width: 100%;
-  border: 1px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-
-.admin-form {
-  display: grid;
-  gap: 10px;
-}
-
-.admin-box {
-  padding: 14px;
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.admin-box h4 {
-  margin: 0;
-}
-
-.broadcast-list li {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.restricted-state {
-  display: grid;
-  gap: 10px;
-  padding: 20px;
-}
-
-@media (max-width: 980px) {
-  .hero-panel,
-  .two-column-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .topbar,
-  .top-actions,
-  .hero-actions,
-  .field-row,
-  .wallet-actions {
-    flex-direction: column;
-    align-items: stretch;
+import React, { useEffect, useMemo, useState } from 'react';
+import './index.css';
+import { supabase } from './lib/supabase';
+import {
+  categories,
+  mockAdminBroadcasts,
+  mockLeaderboard,
+  mockProfile,
+  mockTournaments,
+  mockTransactions,
+  superAdminEmail,
+} from './data/mockData';
+import type { Profile, Tournament, WalletTransaction } from './types';
+
+const tabOptions = ['Upcoming', 'Live', 'Played'] as const;
+type TabName = (typeof tabOptions)[number];
+type NavKey = 'Home' | 'Matches' | 'Wallet' | 'Leaderboard' | 'Profile' | 'Admin';
+
+const currency = (value: number) => `₹${value.toLocaleString('en-IN')}`;
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [authForm, setAuthForm] = useState({ email: 'parimaltikadar110@gmail.com', password: 'demo123', isSignup: false });
+  const [activeNav, setActiveNav] = useState<NavKey>('Home');
+  const [profile, setProfile] = useState<Profile>(mockProfile);
+  const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]>('SOLO BR');
+  const [matchTab, setMatchTab] = useState<TabName>('Upcoming');
+  const [tournaments, setTournaments] = useState<Tournament[]>(mockTournaments);
+  const [transactions, setTransactions] = useState<WalletTransaction[]>(mockTransactions);
+  const [broadcasts, setBroadcasts] = useState(mockAdminBroadcasts);
+  const [winnerForm, setWinnerForm] = useState({ tournamentId: '', winner: '', roomId: '', password: '' });
+  const [newTournament, setNewTournament] = useState({
+    title: '',
+    category: 'SOLO BR',
+    prizePool: '',
+    entryFee: '',
+    matchTime: '',
+    rules: '',
+  });
+
+  useEffect(() => {
+    const loadSupabaseData = async () => {
+      if (!supabase) return;
+
+      try {
+        const { data: tournamentData } = await supabase.from('tournaments').select('*').limit(20);
+        const { data: transactionData } = await supabase.from('transactions').select('*').limit(20);
+
+        if (tournamentData && tournamentData.length > 0) {
+          setTournaments(
+            tournamentData.map((item: any) => ({
+              id: item.id,
+              title: item.title,
+              category: item.category || 'SOLO BR',
+              mapType: item.map_type || 'Erangel',
+              prizePool: Number(item.prize_pool || 0),
+              entryFee: Number(item.entry_fee || 0),
+              slotsLeft: Math.max(0, Number(item.slots_total || 0) - Number(item.slots_taken || 0)),
+              totalSlots: Number(item.slots_total || 0),
+              matchTime: item.match_time || 'TBD',
+              status: item.status || 'upcoming',
+              rules: item.rules || 'Fair play rules apply.',
+              roomId: item.room_id || '',
+              password: item.password || '',
+            }))
+          );
+        }
+
+        if (transactionData && transactionData.length > 0) {
+          setTransactions(
+            transactionData.map((item: any) => ({
+              id: item.id,
+              type: item.type || 'deposit',
+              amount: Number(item.amount || 0),
+              status: item.status || 'success',
+              createdAt: item.created_at || new Date().toISOString(),
+            }))
+          );
+        }
+      } catch (error) {
+        console.warn('Supabase fetch ignored in local fallback mode:', error);
+      }
+    };
+
+    loadSupabaseData();
+  }, []);
+
+  const filteredMatches = useMemo(() => {
+    return tournaments.filter((match) => match.category === activeCategory);
+  }, [activeCategory, tournaments]);
+
+  const joinedMatches = useMemo(() => {
+    return tournaments.filter((match) => match.isJoined || match.status === 'live');
+  }, [tournaments]);
+
+  const upcomingMatches = joinedMatches.filter((match) => match.status === 'upcoming');
+  const liveMatches = joinedMatches.filter((match) => match.status === 'live');
+  const playedMatches = joinedMatches.filter((match) => match.status === 'completed');
+
+  const visibleMyMatches =
+    matchTab === 'Upcoming' ? upcomingMatches : matchTab === 'Live' ? liveMatches : playedMatches;
+
+  const isSuperAdmin = profile.email.toLowerCase() === superAdminEmail.toLowerCase();
+  const isModerator = profile.role === 'moderator' || isSuperAdmin;
+
+  const handleAuthSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsAuthenticated(true);
+  };
+
+  const handleJoin = (matchId: string) => {
+    setTournaments((current) =>
+      current.map((match) =>
+        match.id === matchId && match.slotsLeft > 0
+          ? { ...match, slotsLeft: match.slotsLeft - 1, isJoined: true, status: 'upcoming' }
+          : match
+      )
+    );
+  };
+
+  const handleAddMoney = () => {
+    setProfile((current) => ({
+      ...current,
+      depositBalance: current.depositBalance + 500,
+    }));
+
+    setTransactions((current) => [
+      {
+        id: `tx-${Date.now()}`,
+        type: 'deposit',
+        amount: 500,
+        status: 'success',
+        createdAt: new Date().toISOString(),
+      },
+      ...current,
+    ]);
+  };
+
+  const handlePublishTournament = () => {
+    if (!newTournament.title.trim()) return;
+
+    const nextMatch: Tournament = {
+      id: `t-${Date.now()}`,
+      title: newTournament.title,
+      category: newTournament.category as Tournament['category'],
+      mapType: 'Custom Map',
+      prizePool: Number(newTournament.prizePool || 0),
+      entryFee: Number(newTournament.entryFee || 0),
+      slotsLeft: 30,
+      totalSlots: 30,
+      matchTime: newTournament.matchTime || 'TBA',
+      status: 'upcoming',
+      rules: newTournament.rules || 'Fair play enforced.',
+      roomId: 'CLX-AUTO',
+      password: 'admin-set',
+      isJoined: false,
+    };
+
+    setTournaments((current) => [nextMatch, ...current]);
+    setNewTournament({ title: '', category: 'SOLO BR', prizePool: '', entryFee: '', matchTime: '', rules: '' });
+  };
+
+  const handleDeclareWinner = () => {
+    if (!winnerForm.tournamentId || !winnerForm.winner.trim()) return;
+
+    setTournaments((current) =>
+      current.map((match) =>
+        match.id === winnerForm.tournamentId
+          ? { ...match, status: 'completed', roomId: winnerForm.roomId || match.roomId, password: winnerForm.password || match.password }
+          : match
+      )
+    );
+
+    setWinnerForm({ tournamentId: '', winner: '', roomId: '', password: '' });
+  };
+
+  const handleBroadcast = () => {
+    const next = {
+      id: `b-${Date.now()}`,
+      title: 'Live Broadcast',
+      message: 'The ClashX community is live and match portals are now open.',
+    };
+    setBroadcasts((current) => [next, ...current]);
+  };
+
+  const navItems: NavKey[] = ['Home', 'Matches', 'Wallet', 'Leaderboard', 'Profile', 'Admin'];
+
+  if (!isAuthenticated) {
+    return (
+      <div className="auth-shell">
+        <div className="auth-card">
+          <div className="brand-wrap centered-brand">
+            <div className="brand-logo">C</div>
+            <div>
+              <p className="eyebrow">Esports Arena</p>
+              <h1>ClashX</h1>
+            </div>
+          </div>
+
+          <h2>Welcome back</h2>
+          <p>Sign in with your Supabase account to continue to the tournament dashboard.</p>
+
+          <form onSubmit={handleAuthSubmit} className="auth-form">
+            <label>
+              Email
+              <input
+                type="email"
+                value={authForm.email}
+                onChange={(event) => setAuthForm((current) => ({ ...current, email: event.target.value }))}
+              />
+            </label>
+
+            <label>
+              Password
+              <input
+                type="password"
+                value={authForm.password}
+                onChange={(event) => setAuthForm((current) => ({ ...current, password: event.target.value }))}
+              />
+            </label>
+
+            <button className="primary-button auth-submit" type="submit">
+              {authForm.isSignup ? 'Create account' : 'Sign in'}
+            </button>
+          </form>
+
+          <button
+            className="secondary-button auth-toggle"
+            type="button"
+            onClick={() => setAuthForm((current) => ({ ...current, isSignup: !current.isSignup }))}
+          >
+            {authForm.isSignup ? 'I already have an account' : 'Create new account'}
+          </button>
+        </div>
+      </div>
+    );
   }
 
-  .user-chip {
-    justify-content: center;
-  }
+  return (
+    <div className="app-shell">
+      <header className="topbar">
+        <div className="brand-wrap">
+          <div className="brand-logo">C</div>
+          <div>
+            <p className="eyebrow">Esports Arena</p>
+            <h1>ClashX</h1>
+          </div>
+        </div>
 
-  .hero-panel,
-  .panel-section {
-    padding: 16px;
-  }
+        <div className="top-actions">
+          <button className="pill-button">Daily Free Entry</button>
+          <div className="user-chip">
+            <img src={profile.avatar} alt={profile.name} />
+            <div>
+              <strong>{profile.gameName}</strong>
+              <span>{profile.role}</span>
+            </div>
+          </div>
+        </div>
+      </header>
 
-  .app-shell {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+      <nav className="top-nav">
+        {navItems.map((item) => (
+          <button
+            key={item}
+            className={item === activeNav ? 'nav-item active' : 'nav-item'}
+            onClick={() => setActiveNav(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </nav>
+
+      <main className="content-area">
+        {activeNav === 'Home' && (
+          <>
+            <section className="hero-panel">
+              <div className="hero-copy">
+                <span className="badge">Pro League</span>
+                <h2>Play. Win. Dominate.</h2>
+                <p>
+                  Join premium Free Fire tournaments, claim your prize pool, and rise through the ClashX leaderboard.
+                </p>
+                <div className="hero-actions">
+                  <button className="primary-button">Join Tournament</button>
+                  <button className="secondary-button">Watch Live</button>
+                </div>
+              </div>
+
+              <div className="hero-stats">
+                <div className="stat-card">
+                  <span>Total Prize</span>
+                  <strong>{currency(128000)}</strong>
+                </div>
+                <div className="stat-card">
+                  <span>Live Rooms</span>
+                  <strong>42</strong>
+                </div>
+                <div className="stat-card">
+                  <span>Players</span>
+                  <strong>12.6k</strong>
+                </div>
+              </div>
+            </section>
+
+            <nav className="category-tabs" aria-label="Tournament categories">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={category === activeCategory ? 'tab active' : 'tab'}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </nav>
+
+            <section className="panel-section">
+              <div className="section-head">
+                <h3>{activeCategory}</h3>
+                <button className="ghost-button">View All</button>
+              </div>
+
+              <div className="match-grid">
+                {filteredMatches.map((match) => (
+                  <article key={match.id} className="match-card">
+                    <div className="match-header">
+                      <span className={`status-badge ${match.status}`}>{match.status}</span>
+                      <span className="match-time">{match.matchTime}</span>
+                    </div>
+
+                    <div className="match-body">
+                      <h4>{match.title}</h4>
+                      <p>{match.mapType}</p>
+                      <div className="meta-row">
+                        <span>Slots Left: {match.slotsLeft}/{match.totalSlots}</span>
+                        <span>Prize: {currency(match.prizePool)}</span>
+                      </div>
+                      <div className="meta-row">
+                        <span>Entry: {currency(match.entryFee)}</span>
+                        <span>Rules: {match.rules}</span>
+                      </div>
+                    </div>
+
+                    <div className="card-actions">
+                      <button className="primary-button" onClick={() => handleJoin(match.id)}>
+                        {match.isJoined ? 'Joined' : 'Join'}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
+        {activeNav === 'Matches' && (
+          <section className="panel-section">
+            <div className="section-head">
+              <h3>My Matches</h3>
+            </div>
+
+            <div className="tab-switchers">
+              {tabOptions.map((tab) => (
+                <button
+                  key={tab}
+                  className={tab === matchTab ? 'segmented active' : 'segmented'}
+                  onClick={() => setMatchTab(tab)}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            <div className="match-grid compact-grid">
+              {visibleMyMatches.length > 0 ? (
+                visibleMyMatches.map((match) => (
+                  <article key={match.id} className="match-card compact">
+                    <div className="match-card-top">
+                      <p>{match.title}</p>
+                      <span className={`status-badge ${match.status}`}>{match.status}</span>
+                    </div>
+                    <div className="mini-stat-row">
+                      <span>{match.mapType}</span>
+                      <span>{match.matchTime}</span>
+                    </div>
+                    <div className="mini-stat-row">
+                      <span>Room ID: {match.roomId || 'Pending'}</span>
+                      <span>Password: {match.password || 'TBA'}</span>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <div className="empty-state">No matches in this section yet.</div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {activeNav === 'Wallet' && (
+          <section className="panel-section wallet-panel">
+            <div className="section-head">
+              <h3>Wallet</h3>
+            </div>
+
+            <div className="wallet-summary">
+              <div className="wallet-box">
+                <span>Current Deposit Balance</span>
+                <strong>{currency(profile.depositBalance)}</strong>
+              </div>
+              <div className="wallet-box highlight">
+                <span>Winning Balance</span>
+                <strong>{currency(profile.winningBalance)}</strong>
+              </div>
+            </div>
+
+            <div className="wallet-actions">
+              <button className="primary-button" onClick={handleAddMoney}>Add Money via UPI</button>
+              <button className="secondary-button">UPI Withdrawal</button>
+              <button className="secondary-button">Redeem Code</button>
+            </div>
+
+            <div className="transactions-panel">
+              <h4>Transaction History</h4>
+              <ul>
+                {transactions.map((tx) => (
+                  <li key={tx.id}>
+                    <div>
+                      <strong>{tx.type}</strong>
+                      <span>{new Date(tx.createdAt).toLocaleString()}</span>
+                    </div>
+                    <div className="amount-wrap">
+                      <strong>{tx.type === 'deposit' || tx.type === 'win' ? '+' : '-'}{currency(tx.amount)}</strong>
+                      <span className={`tx-status ${tx.status}`}>{tx.status}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {activeNav === 'Leaderboard' && (
+          <section className="panel-section leaderboard-panel">
+            <div className="section-head">
+              <h3>Leaderboard</h3>
+            </div>
+
+            <div className="leaderboard-list">
+              {mockLeaderboard.map((entry) => (
+                <div key={entry.id} className="leaderboard-item">
+                  <div className="leaderboard-user">
+                    <span className="rank-pill">#{entry.rank}</span>
+                    <img src={entry.avatar} alt={entry.name} />
+                    <div>
+                      <strong>{entry.name}</strong>
+                      <span>{entry.wins} wins</span>
+                    </div>
+                  </div>
+                  <strong>{currency(entry.earnings)}</strong>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {activeNav === 'Profile' && (
+          <section className="panel-section profile-panel">
+            <div className="section-head">
+              <h3>Profile & Settings</h3>
+            </div>
+
+            <div className="profile-form">
+              <div className="field-row">
+                <label>
+                  Game Name
+                  <input value={profile.gameName} onChange={(e) => setProfile((current) => ({ ...current, gameName: e.target.value }))} />
+                </label>
+                <label>
+                  Free Fire Game ID
+                  <input value={profile.gameId} onChange={(e) => setProfile((current) => ({ ...current, gameId: e.target.value }))} />
+                </label>
+              </div>
+
+              <div className="profile-links">
+                <button className="secondary-button">Join Private Tournament</button>
+                <button className="secondary-button">Withdrawals</button>
+                <button className="secondary-button">Transactions</button>
+                <button className="secondary-button">Customer Support</button>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {activeNav === 'Admin' && (
+          <section className="panel-section admin-panel">
+            <div className="section-head">
+              <h3>Admin & Moderator</h3>
+            </div>
+
+            {isModerator ? (
+              <>
+                <div className="admin-box">
+                  <h4>Create Tournament</h4>
+                  <div className="admin-form">
+                    <input
+                      placeholder="Title"
+                      value={newTournament.title}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, title: e.target.value }))}
+                    />
+                    <select
+                      value={newTournament.category}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, category: e.target.value }))}
+                    >
+                      {categories.map((category) => (
+                        <option key={category} value={category}>{category}</option>
+                      ))}
+                    </select>
+                    <input
+                      placeholder="Prize Pool"
+                      value={newTournament.prizePool}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, prizePool: e.target.value }))}
+                    />
+                    <input
+                      placeholder="Entry Fee"
+                      value={newTournament.entryFee}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, entryFee: e.target.value }))}
+                    />
+                    <input
+                      placeholder="Match Time"
+                      value={newTournament.matchTime}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, matchTime: e.target.value }))}
+                    />
+                    <textarea
+                      placeholder="Rules"
+                      rows={3}
+                      value={newTournament.rules}
+                      onChange={(e) => setNewTournament((current) => ({ ...current, rules: e.target.value }))}
+                    />
+                  </div>
+                  <button className="primary-button" onClick={handlePublishTournament}>Publish Match</button>
+                </div>
+
+                <div className="admin-box">
+                  <h4>Winner Declaration</h4>
+                  <div className="admin-form">
+                    <select value={winnerForm.tournamentId} onChange={(e) => setWinnerForm((current) => ({ ...current, tournamentId: e.target.value }))}>
+                      <option value="">Select tournament</option>
+                      {tournaments.map((match) => (
+                        <option key={match.id} value={match.id}>{match.title}</option>
+                      ))}
+                    </select>
+                    <input placeholder="Winner Name" value={winnerForm.winner} onChange={(e) => setWinnerForm((current) => ({ ...current, winner: e.target.value }))} />
+                    <input placeholder="Room ID" value={winnerForm.roomId} onChange={(e) => setWinnerForm((current) => ({ ...current, roomId: e.target.value }))} />
+                    <input placeholder="Password" value={winnerForm.password} onChange={(e) => setWinnerForm((current) => ({ ...current, password: e.target.value }))} />
+                  </div>
+                  <button className="primary-button" onClick={handleDeclareWinner}>Declare Winner</button>
+                </div>
+
+                <div className="admin-box">
+                  <h4>Broadcast</h4>
+                  <ul className="broadcast-list">
+                    {broadcasts.map((item) => (
+                      <li key={item.id}>
+                        <strong>{item.title}</strong>
+                        <span>{item.message}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="primary-button" onClick={handleBroadcast}>Send Broadcast</button>
+                </div>
+              </>
+            ) : (
+              <div className="restricted-state">
+                <p>Access restricted to moderators and the super admin.</p>
+                <small>Super admin email: {superAdminEmail}</small>
+              </div>
+            )}
+          </section>
+        )}
+      </main>
+    </div>
+  );
 }
+
+export default App;

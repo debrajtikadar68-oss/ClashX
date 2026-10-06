@@ -1,90 +1,34 @@
-CREATE TABLE IF NOT EXISTS public.users (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  email text UNIQUE NOT NULL,
-  game_name text,
-  free_fire_uid text,
-  avatar_url text,
-  role text NOT NULL DEFAULT 'user',
-  deposit_balance numeric DEFAULT 0,
-  winning_balance numeric DEFAULT 0,
-  created_at timestamptz DEFAULT now()
-);
+# ClashX
 
-CREATE TABLE IF NOT EXISTS public.tournaments (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  title text NOT NULL,
-  category text NOT NULL,
-  map_type text,
-  prize_pool numeric DEFAULT 0,
-  entry_fee numeric DEFAULT 0,
-  slots_total integer DEFAULT 0,
-  slots_taken integer DEFAULT 0,
-  match_time timestamptz,
-  status text DEFAULT 'upcoming',
-  rules text,
-  created_by uuid REFERENCES public.users(id),
-  created_at timestamptz DEFAULT now()
-);
+ClashX is a premium esports tournament mobile web app for Free Fire players. It is built with React + TypeScript and is designed to work with Supabase for authentication, tournament data, wallet flows, and role-based admin controls.
 
-CREATE TABLE IF NOT EXISTS public.tournament_joins (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id uuid REFERENCES public.users(id),
-  tournament_id uuid REFERENCES public.tournaments(id),
-  joined_at timestamptz DEFAULT now(),
-  status text DEFAULT 'joined'
-);
+## Features
 
-CREATE TABLE IF NOT EXISTS public.transactions (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id uuid REFERENCES public.users(id),
-  type text NOT NULL,
-  amount numeric NOT NULL,
-  status text DEFAULT 'success',
-  created_at timestamptz DEFAULT now()
-);
+- Professional dark/light esports UI
+- Dynamic tournament category tabs
+- My Matches tracking
+- Wallet with UPI add money, withdrawal, and transaction ledger
+- Leaderboards and profile management
+- Moderator and super admin panel
+- Supabase-ready schema and session-aware data layer
 
-CREATE TABLE IF NOT EXISTS public.broadcasts (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  title text NOT NULL,
-  message text NOT NULL,
-  created_by uuid REFERENCES public.users(id),
-  created_at timestamptz DEFAULT now()
-);
+## Getting started
 
-ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.tournaments ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.tournament_joins ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.transactions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.broadcasts ENABLE ROW LEVEL SECURITY;
+1. Install dependencies:
+   npm install
+2. Copy `.env.example` to `.env` and add your project credentials.
+3. Start the local app:
+   npm run dev
 
-CREATE POLICY "Users can read own profile" ON public.users
-  FOR SELECT USING (auth.uid() = id);
+## Required environment variables
 
-CREATE POLICY "Users can update own profile" ON public.users
-  FOR UPDATE USING (auth.uid() = id);
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
 
-CREATE POLICY "Public read tournaments" ON public.tournaments
-  FOR SELECT USING (true);
+## Supabase schema
 
-CREATE POLICY "Moderators can manage tournaments" ON public.tournaments
-  FOR ALL USING (
-    EXISTS (
-      SELECT 1 FROM public.users u
-      WHERE u.id = auth.uid() AND u.role IN ('moderator', 'super_admin')
-    )
-  );
+See `supabase/schema.sql` for the base database layout, including `users`, `tournaments`, `tournament_joins`, `transactions`, and `broadcasts`.
 
-CREATE POLICY "Users can read their joins" ON public.tournament_joins
-  FOR SELECT USING (auth.uid() = user_id);
+## Notes
 
-CREATE POLICY "Users can insert own joins" ON public.tournament_joins
-  FOR INSERT WITH CHECK (auth.uid() = user_id);
-
-CREATE POLICY "Users can read own transactions" ON public.transactions
-  FOR SELECT USING (auth.uid() = user_id);
-
-CREATE POLICY "Users can insert own wallet actions" ON public.transactions
-  FOR INSERT WITH CHECK (auth.uid() = user_id);
-
-CREATE POLICY "Public read broadcasts" ON public.broadcasts
-  FOR SELECT USING (true);
+The project includes mock fallback data for UI development and local testing. Once valid Supabase credentials are added, the app can fetch live data from Supabase during runtime.
